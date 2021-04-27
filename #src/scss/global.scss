@@ -1,0 +1,45 @@
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+$purpure-light: #9d5cd0;
+$purpure-link: #c283f3;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  background-color: transparent;
+  outline-color: $purpure-light;
+  outline-color: #c283f3;
+  transition: 0.3s;
+  &:hover {
+    color: #c283f3;
+  }
+  &:active {
+    color: #9d5cd0;
+  }
+}
+.hide {
+  display: none !important;
+}
+.section-container {
+  padding-top: 90px;
+  padding-bottom: 70px;
+}

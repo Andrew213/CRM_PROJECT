@@ -1,0 +1,8 @@
+node_modules/
+CRM_PROJECT/**/*
+package-lock.json
+info.txt
+.DS_Store
+.AppleDouble
+.LSOverribe
+.vs
