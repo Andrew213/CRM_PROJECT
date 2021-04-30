@@ -14,6 +14,8 @@ module.exports = {
     mode: mode,
     target: target,
 
+    entry: ['babel-polyfill', './#src/js/app.js'],
+
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, path.basename(__dirname)),

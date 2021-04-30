@@ -16,8 +16,8 @@ let clean_css = require("gulp-clean-css");
 let newer = require('gulp-newer');
 let concat = require("gulp-concat");
 let cssmin = require("gulp-cssmin");
-let ts = require('gulp-typescript');
-let tsProject = ts.createProject('tsconfig.json');
+// let ts = require('gulp-typescript');
+// let tsProject = ts.createProject('tsconfig.json');
 
 
 const webpack = require('webpack');
@@ -48,7 +48,7 @@ let path = {
 		favicon: src_folder + "/img/favicon.{jpg,png,svg,gif,ico,webp}",
 		html: [src_folder + "/*.html", "!" + src_folder + "/_*.html"],
 		libs: src_folder + "/js/libs/*.{js,min.js}",
-		js: [src_folder + "/js/*.*"],
+		js: [src_folder + "/js/app.js"],
 		css: src_folder + "/scss/style.scss",
 		images: [src_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}", "!**/favicon.*"],
 		fonts: src_folder + "/fonts/*.{ttf,woff,woff2}",
@@ -56,12 +56,13 @@ let path = {
 	},
 	watch: {
 		html: src_folder + "/**/*.html",
-		js: src_folder + "/**/*.ts}",
+		js: src_folder + "/**/*.js",
 		css: src_folder + "/scss/**/*.scss",
 		images: src_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}"
 	},
 	clean: "./" + project_name + "/"
 };
+
 function browserSync(done) {
 	browsersync.init({
 		server: {
@@ -108,15 +109,37 @@ function css() {
 		.pipe(dest(path.build.css))
 		.pipe(browsersync.stream());
 }
+// function js() {
+// 	return src(path.src.js, {})
+
+// 		.pipe(fileinclude())
+// 		.pipe(webpackStream(webpackConfig), webpack)
+// 		.pipe(dest(path.build.js))
+// 		.pipe(browsersync.stream());
+// }
+
+
+gulp.task("script", function () {
+	return gulp
+		.src([path.src.libs,
+			"node_modules/focus-visible/dist/focus-visible.min.js",
+			"node_modules/focus-manager/focusManager.min.js",
+		])
+		.pipe(concat("libs.min.js"))
+		.pipe(uglify())
+		.pipe(dest(path.build.js));
+});
+
 function js() {
 	return src(path.src.js, {})
 
+		// .pipe(fileinclude())
 
 		.pipe(webpackStream(webpackConfig), webpack)
-		.pipe(gulp.dest('./dist/js'))
 		.pipe(dest(path.build.js))
 		.pipe(browsersync.stream());
 }
+
 
 function images() {
 	return src(path.src.images)
@@ -203,9 +226,8 @@ function watchFiles() {
 	gulp.watch([path.watch.js], js);
 	gulp.watch([path.watch.images], images);
 }
-let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, favicon, images), fonts, gulp.parallel(fontstyle));
+let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, favicon, images), fonts, gulp.parallel(fontstyle, "script"));
 let watch = gulp.parallel(build, watchFiles, browserSync,);
-
 
 exports.html = html;
 exports.css = css;

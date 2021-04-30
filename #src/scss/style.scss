@@ -89,10 +89,10 @@ body {
 //@import "datepicker";
 //@import "lightgallery";
 //@import "pagging";
-@import "header";
-@import "hero.scss";
+@import "../components/header/header.scss";
+@import "../components/hero/hero.scss";
 @import "footer";
-@import "popup";
+@import "../components/popup/popup.scss";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 
 //<ОСНОВНОЙ БЛОК>====================================================================================================

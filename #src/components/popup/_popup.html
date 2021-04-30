@@ -1,0 +1,109 @@
+<div class="popup popup-add">
+    <div class="popup__content popup-add__content">
+        <div class="popup__body popup-add__body">
+            <h3 class="popup__title popup-add__title">Новый клиент</h3>
+            <button aria-label="закрыть окно с картиной" class="popup__close popup-add__close"></button>
+            <form class="popup__form popup-add__form">
+                <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--lastname">
+                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                        Фамилия<span class="popup__require">*</span>
+                    </div>
+                    <input type="text" class="popup__input popup-edit__input popup__input--lastname" required>
+                    <span placeholder="Фамилия" class="popup__placeholder"></span>
+                </label>
+                <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--name">
+                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                        Имя<span class="popup__require">*</span>
+                    </div>
+                    <input type="text" class="popup__input popup-edit__input popup__input--name" required>
+                    <span placeholder="Имя" class="popup__placeholder"></span>
+                </label>
+                <div class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--middlename">
+                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                        Отчество
+                    </div>
+                    <input type="text" class="popup__input popup-edit__input popup__input--middlename"
+                        placeholder="Отчество">
+                </div>
+                <div class="popup__contact popup-add__contact">
+                    <div class="popup__contact-inner select" id="select1">
+                        <select class="popup__contact-select">
+                            <option class="popup__select-option" value="Вконтакте">Вконтакте</option>
+                            <option class="popup__select-option" value="Твиттер">Твиттер</option>
+                        </select>
+                        <input type="text" class="popup__contact-input" placeholder="Введите данные контакта">
+                        <button type="reset" class="popup__contact-del" aria-label="Удалить контакт"></button>
+                    </div>
+                    <button class="popup__contact-btn popup-add__contact">Добавить контакт</button>
+                </div>
+                <button class="popup__btn-save" type="submit">Сохранить</button>
+            </form>
+            <div class="popup__addcontact">
+            </div>
+            <button class="popup__btn-cancel">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup popup-edit">
+    <div class="popup__content popup-edit__content">
+        <div class="popup__body popup-edit__body">
+            <h3 class="popup__title popup-edit__title">Изменить данные <span class="popup__id">ID: 12345678</span></h3>
+            <button aria-label="закрыть окно с картиной" class="popup__close popup-edit__close"></button>
+            <form class="popup__form popup-edit__form">
+                <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--lastname">
+                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                        Фамилия<span class="popup__require">*</span>
+                    </div>
+                    <input type="text" class="popup__input popup-edit__input popup__input--lastname" required>
+                    <span placeholder="Фамилия" class="popup__placeholder"></span>
+                </label>
+                <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--name">
+                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                        Имя<span class="popup__require">*</span>
+                    </div>
+                    <input type="text" class="popup__input popup-edit__input popup__input--name" required>
+                    <span placeholder="Имя" class="popup__placeholder"></span>
+                </label>
+                <div class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--middlename">
+                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                        Отчество
+                    </div>
+                    <input type="text" class="popup__input popup-edit__input popup__input--middlename"
+                        placeholder="Отчество">
+                </div>
+                <div class="popup__contact popup-edit__contact">
+                    <div class="popup__contact-inner select" id="select1">
+                        <select class="popup__contact-select">
+                            <option class="popup__select-option" value="Вконтакте">Вконтакте</option>
+                            <option class="popup__select-option" value="Твиттер">Твиттер</option>
+                        </select>
+                        <input type="text" class="popup__contact-input" placeholder="Введите данные контакта">
+                        <button type="reset" class="popup__contact-del" aria-label="Удалить контакт"></button>
+                    </div>
+                    <button class="popup__contact-btn popup-edit__contact">Добавить контакт</button>
+                </div>
+                <button class="popup__btn-save" type="submit">Сохранить</button>
+            </form>
+            <button class="popup__btn-cancel">Отмена</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="popup__addcontact">
+                <div class="popup__contact-wrapper">
+                    <div class="popup__select-wrapper select" id="select1">
+                        <select class="popup__select">
+                            <option value="Вк" class="popup__select-option">Вконтакте</option>
+                            <option value="Твиттер" class="popup__select-option">Твиттер</option>
+                            <option value="Фейсбук" class="popup__select-option">Фейсбук</option>
+                        </select>
+                    </div>
+                    <input class="popup__contact-input" type="text" placeholder="Введите данные контакта">
+                    <button class="popup__contact-btn-del" aria-label="Убрать контакт">x</button>
+                </div>
+                <button class="popup__addcontact-btn">Добавить контакт</button>
+            </div>

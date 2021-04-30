@@ -20,27 +20,27 @@
     }
 
     &__table-head {
+        text-align: left;
+        padding-bottom: 8px;
+    }
+    &__table-head--id {
+        padding-left: 20px;
     }
 
     &__table-sort {
         font-size: 12px;
         color: #b0b0b0;
         text-align: left;
-        padding-bottom: 5px;
-        // padding-bottom: 20px;
-        // margin-left: 20px;
-        // margin-bottom: 10px;
     }
 
     &__table-sort--id {
         color: #b0b0b0;
         position: relative;
-        padding-left: 20px;
         &::after {
             content: "";
             background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.49691e-07 4L0.705 4.705L3.5 1.915L3.5 8L4.5 8L4.5 1.915L7.29 4.71L8 4L4 -3.49691e-07L3.49691e-07 4Z' fill='%239873FF'/%3E%3C/svg%3E%0A");
             position: absolute;
-            right: -35%;
+            right: -100%;
             top: 30%;
             width: 8px;
             height: 8px;
@@ -68,7 +68,7 @@
         color: #9873ff;
         font-weight: 600;
         font-size: 10px;
-        padding-left: 10px;
+        margin-left: 10px;
         position: relative;
         &::before {
             content: "";
@@ -76,7 +76,7 @@
             width: 8px;
             height: 8px;
             position: absolute;
-            left: 0;
+            left: -10px;
             bottom: 20%;
             transform: rotate(180deg);
         }
@@ -97,7 +97,7 @@
             height: 8px;
             position: absolute;
             right: 15px;
-            bottom: 22%;
+            bottom: 10%;
             transform: rotate(180deg);
         }
     }
@@ -116,7 +116,7 @@
             height: 8px;
             position: absolute;
             right: 28px;
-            bottom: 22%;
+            bottom: 10%;
             transform: rotate(180deg);
         }
     }
@@ -424,6 +424,45 @@
 
         &:active {
             background-color: #8052ff;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .hero {
+        &__table-cell--name {
+            padding-right: 0px;
+        }
+        &__date {
+            display: block;
+            margin-bottom: 5px;
+        }
+        &__table-cell--contacts {
+            padding-right: 0;
+        }
+        &__table-cell--create {
+            padding-left: 20px;
+            width: 90px;
+        }
+        &__table-cell--actions {
+            width: 85px;
+        }
+        &__table-cell--contacts {
+        }
+        &__table-cell--changes {
+            width: 90px;
+        }
+
+        &__table-head--create {
+            padding-left: 20px;
+        }
+
+        &__table-btn--edit {
+            padding-right: 0;
+        }
+
+        &__table-sort--changes::after {
+            right: 25px;
         }
     }
 }
