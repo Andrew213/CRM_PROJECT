@@ -61,4 +61,4 @@ export const sendRequest = async (url, item) => {
 
 // sendRequest('http://localhost:5000/api/clients', item)
 
-console.log(12)
+// console.log(12)

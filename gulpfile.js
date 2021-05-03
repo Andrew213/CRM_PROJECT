@@ -122,12 +122,23 @@ function css() {
 gulp.task("script", function () {
 	return gulp
 		.src([path.src.libs,
+			"node_modules/choices.js/public/assets/scripts/choices.min.js",
 			"node_modules/focus-visible/dist/focus-visible.min.js",
 			"node_modules/focus-manager/focusManager.min.js",
 		])
 		.pipe(concat("libs.min.js"))
 		.pipe(uglify())
 		.pipe(dest(path.build.js));
+});
+
+gulp.task("style", function () {
+	return gulp
+		.src([path.src.libsCss,
+			"node_modules/choices.js/public/assets/styles/choices.min.css",
+		])
+		.pipe(concat("libs.min.css"))
+		.pipe(cssmin())
+		.pipe(dest(path.build.css));
 });
 
 function js() {
@@ -226,7 +237,7 @@ function watchFiles() {
 	gulp.watch([path.watch.js], js);
 	gulp.watch([path.watch.images], images);
 }
-let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, favicon, images), fonts, gulp.parallel(fontstyle, "script"));
+let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, favicon, images), fonts, gulp.parallel(fontstyle, "script", "style"));
 let watch = gulp.parallel(build, watchFiles, browserSync,);
 
 exports.html = html;

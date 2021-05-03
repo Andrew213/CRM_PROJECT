@@ -1,50 +1,39 @@
 import { sendRequest } from "../components/popup/saveStudent";
-import { addClickListener } from "./renderDom";
-
-
+import { Select } from "../components/popup/select";
+import { addClickListener } from "./addClickListener.js";
+import { DOM } from "./DOM";
 
 addClickListener()
 
+const select = new Select('.select', {
+    selectedId: '4',
+    data: [
+        { id: '1', value: 'Твиттер' },
+        { id: '2', value: 'Фейсбук' },
+        { id: '3', value: 'Телеграмм' },
+        { id: '4', value: 'Телефон' },
+        { id: '5', value: 'Вконтакте' },
+        { id: '6', value: 'Ватсап' }
+    ],
+    onSelect(item) {
+        console.log('Selected item: ', item)
+    }
+})
 
-let item = {
-    name: 'Maxim',
-    surname: 'Perepelica',
-    lastname: 'Vladimirovich',
-    contacts: [
-        {
-            type: 'vk',
-            value: 'https://vk.com'
-        },
-        {
-            type: 'telegram',
-            value: '@xyicgori'
-        }
-    ]
-}
+// const select = DOM.getEl('.popup__contact-select');
 
-sendRequest('http://localhost:5000/api/clients', item)
-
-// ############################################
-
-
-
-// fetch('http://localhost:5000/api/clients', {
-//     method: 'POST',
-//     body: JSON.stringify({
-//         name: "Андрей",
-//         surname: "Андреевич",
-//         lastname: "Кочанов",
-//         contacts: [
-//             {
-//                 type: 'vk',
-//                 value: "https://vk.com"
-//             }
-//         ]
-//     }),
-//     headers: {
-//         'Content-Type': 'application/json',
-//     }
+// const choices = new Choices(select, {
+//     searchEnabled: false,
+//     itemSelectText: '',
 // });
 
-// let x = Date.now.toString()
-// console
+
+// select.addEventListener('change', ev => {
+
+//     const changedEl = ev.target.closest('.choices__input').querySelector('option')
+
+//     if (changedEl.textContent === 'Твиттер') {
+//         console.log(changedEl.textContent)
+//     }
+
+// })

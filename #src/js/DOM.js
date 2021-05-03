@@ -1,15 +1,3 @@
-import { activatePopup } from "../components/popup/popup.js"
-
-
-
-function addClickListener() {
-    document.addEventListener('click', function (event) {
-        activatePopup(event);
-    });
-};
-export { addClickListener }
-
-
 export class DOM {
     static getEl(selector) {
         return document.querySelector(selector)

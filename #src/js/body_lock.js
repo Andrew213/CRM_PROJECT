@@ -39,6 +39,4 @@ function body_lock_remove(delay) {
     }
 }
 
-let x = 42;
-
 export { body_lock_add, body_lock_remove, unlock }
