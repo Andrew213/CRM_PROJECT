@@ -1,41 +1,42 @@
 <div class="popup popup-add _active">
+    <div class="popup__backdrop" data-type="popup-backdrop"></div>
     <div class="popup__content popup-add__content">
         <div class="popup__body popup-add__body">
             <h3 class="popup__title popup-add__title">Новый клиент</h3>
-            <button aria-label="закрыть окно с картиной" data-type='popup-close'
+            <button aria-label="закрыть окно с картиной" data-type='btn-close'
                 class="popup__close popup-add__close"></button>
             <form class="popup__form popup-add__form">
-                <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--lastname">
+                <label class="popup__input-wrapper popup__add-input-wrapper popup__add-input-wrapper--lastname">
                     <div class="popup__placeholder popup__place-holder--sub _hidden">
                         Фамилия<span class="popup__require">*</span>
                     </div>
-                    <input type="text" class="popup__input popup-edit__input popup__input--lastname" required>
+                    <input type="text" data-rule="text"
+                        class="popup__input popup-add__input popup-add__input--lastname popup__input--lastname"
+                        required>
                     <span placeholder="Фамилия" class="popup__placeholder"></span>
                 </label>
-                <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--name">
+                <label class="popup__input-wrapper popup__add-input-wrapper popup__add-input-wrapper--name">
                     <div class="popup__placeholder popup__place-holder--sub _hidden">
                         Имя<span class="popup__require">*</span>
                     </div>
-                    <input type="text" class="popup__input popup-edit__input popup__input--name" required>
+                    <input type="text" data-rule="text"
+                        class="popup__input popup-add__input popup-add__input--name popup__input--name" required>
                     <span placeholder="Имя" class="popup__placeholder"></span>
                 </label>
-                <div class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--middlename">
-                    <div class="popup__placeholder popup__place-holder--sub _hidden">
+                <div class="popup__input-wrapper popup__add-input-wrapper popup__add-input-wrapper--surname">
+                    <div class="popup__placeholder popup__place-holder--sub popup-add__input--surname _hidden">
                         Отчество
                     </div>
-                    <input type="text" class="popup__input popup-edit__input popup__input--middlename"
+                    <input type="text" data-rule="text"
+                        class="popup__input popup-add__input popup__add--surname popup__input--surname"
                         placeholder="Отчество">
                 </div>
                 <div class="popup__contact popup-add__contact">
-                    <div class="popup__contact-inner">
-                        <div class="select">
-                        </div>
-                        <input type="text" class="popup__contact-input" placeholder="Введите данные контакта">
-                        <button type="reset" class="popup__contact-del" aria-label="Удалить контакт"></button>
-                    </div>
-                    <button class="popup__contact-btn popup-add__contact">Добавить контакт</button>
+
+                    <button class="popup__contact-btn popup-add__contact" data-type="btn-addContact">Добавить
+                        контакт</button>
                 </div>
-                <button class="popup__btn-save" type="submit">Сохранить</button>
+                <button class="popup__btn-save" type="submit" data-type="btn-save">Сохранить</button>
             </form>
             <div class="popup__addcontact">
             </div>
@@ -44,43 +45,49 @@
     </div>
 </div>
 
+
+
 <div class="popup popup-edit">
+    <div class="popup__backdrop" data-type="popup-backdrop"></div>
     <div class="popup__content popup-edit__content">
         <div class="popup__body popup-edit__body">
             <h3 class="popup__title popup-edit__title">Изменить данные <span class="popup__id">ID: 12345678</span></h3>
-            <button aria-label="закрыть окно с картиной" class="popup__close popup-edit__close"></button>
+            <button aria-label="закрыть окно с картиной" class="popup__close popup-edit__close"
+                data-type="btn-close"></button>
             <form class="popup__form popup-edit__form">
                 <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--lastname">
                     <div class="popup__placeholder popup__place-holder--sub _hidden">
                         Фамилия<span class="popup__require">*</span>
                     </div>
-                    <input type="text" class="popup__input popup-edit__input popup__input--lastname" required>
+                    <input type="text"
+                        class="popup__input popup-edit__input popup-edit__input--lastname popup__input--lastname"
+                        required>
                     <span placeholder="Фамилия" class="popup__placeholder"></span>
                 </label>
                 <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--name">
                     <div class="popup__placeholder popup__place-holder--sub _hidden">
                         Имя<span class="popup__require">*</span>
                     </div>
-                    <input type="text" class="popup__input popup-edit__input popup__input--name" required>
+                    <input type="text" class="popup__input popup-edit__input popup-edit__input--name popup__input--name"
+                        required>
                     <span placeholder="Имя" class="popup__placeholder"></span>
                 </label>
-                <div class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--middlename">
+                <div class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--surname">
                     <div class="popup__placeholder popup__place-holder--sub _hidden">
                         Отчество
                     </div>
-                    <input type="text" class="popup__input popup-edit__input popup__input--middlename"
+                    <input type="text"
+                        class="popup__input popup-edit__input popup-edit__input--surname popup__input--surname"
                         placeholder="Отчество">
                 </div>
-                <div class="popup__contact popup-edit__contact">
-                    <div class="popup__contact-inner select" id="select1">
-                        <select class="popup__contact-select">
-                            <option class="popup__select-option" value="Вконтакте">Вконтакте</option>
-                            <option class="popup__select-option" value="Твиттер">Твиттер</option>
-                        </select>
+                <div class="popup__contact popup-add__contact">
+                    <div class="popup__contact-inner">
+                        <div class="select select-edit">
+                        </div>
                         <input type="text" class="popup__contact-input" placeholder="Введите данные контакта">
                         <button type="reset" class="popup__contact-del" aria-label="Удалить контакт"></button>
                     </div>
-                    <button class="popup__contact-btn popup-edit__contact">Добавить контакт</button>
+                    <button class="popup__contact-btn popup-add__contact">Добавить контакт</button>
                 </div>
                 <button class="popup__btn-save" type="submit">Сохранить</button>
             </form>
@@ -88,8 +95,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <!-- <div class="popup__addcontact">

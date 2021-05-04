@@ -67,6 +67,7 @@
 		"focus-manager": "^0.4.1",
 		"focus-visible": "^5.2.0",
 		"gulp-typescript": "*",
+		"inputmask": "^5.0.5",
 		"transform-runtime": "*",
 		"whatwg-fetch": "^3.6.2"
 	}

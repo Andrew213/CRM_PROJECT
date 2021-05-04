@@ -3,7 +3,7 @@ import { fetch as fetchPolyfill } from 'whatwg-fetch'
 
 
 export class Fetch {
-    sendRequest(url) {
+    static sendRequest(url, item) {
         fetchPolyfill(url, {
             method: 'POST',
             body: JSON.stringify(item),
@@ -12,14 +12,14 @@ export class Fetch {
             }
         })
     }
-    async getRequest(url) {
+    static async getRequest(url) {
         let response = await fetchPolyfill(url)
         return await response.json()
     }
-    deleteRequest(url) {
+    static deleteRequest(url) {
 
     }
-    patchRequest(url) {
+    static patchRequest(url) {
 
     }
 }

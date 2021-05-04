@@ -1,11 +1,10 @@
-import { sendRequest } from "../components/popup/saveStudent";
-import { Select } from "../components/popup/select/select";
+import { Contact } from "../components/popup/addContact/addContact";
+import { Select } from "../components/popup/addContact/select/select";
 import { addClickListener } from "./addClickListener.js";
-import { DOM } from "./DOM";
 
-// addClickListener()
+addClickListener()
 
-const select = new Select('.select', {
+export const select1 = new Select('.select-edit', {
     selectedId: '2',
     data: [
         { id: '1', value: 'Твиттер' },
@@ -18,5 +17,11 @@ const select = new Select('.select', {
     onSelect(item) {
         console.log('Selected item: ', item)
     }
-})
+});
+
+let newContact = new Contact('.popup__contact')
+
+
+
+
 

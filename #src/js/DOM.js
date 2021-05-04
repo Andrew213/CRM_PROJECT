@@ -4,24 +4,24 @@ export class DOM {
     //     this.addClickListener(...callback)
     // }
 
-    getEl(selector) {
+    static getEl(selector) {
         return document.querySelector(selector)
 
     };
 
-    setAttr(selector, attr) {
+    static setAttr(selector, attr) {
         selector.setAttribute(attr);
     }
 
-    createEl(el) {
+    static createEl(el) {
         return document.createElement(el)
     };
 
-    addClass(el, selector) {
+    static addClass(el, selector) {
         return el.classList.add(selector)
     }
 
-    removeClass(el, selector) {
+    static removeClass(el, selector) {
         return el.classList.remove(selector)
     }
 
@@ -29,18 +29,18 @@ export class DOM {
         console.log('Hello', string)
     }
 
-    addClickListener(...callback) {
-        document.addEventListener('click', ev => {
+    // addClickListener(...callback) {
+    //     document.addEventListener('click', ev => {
 
-            callback.forEach(func => {
-                if (typeof func === 'function') {
-                    func(ev)
-                } else {
-                    console.log(func)
+    //         callback.forEach(func => {
+    //             if (typeof func === 'function') {
+    //                 func(ev)
+    //             } else {
+    //                 console.log(func)
 
-                }
-            })
-        })
-    }
+    //             }
+    //         })
+    //     })
+    // }
 
 }

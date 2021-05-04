@@ -1,6 +1,8 @@
-import { DOM } from "../../../js/DOM";
+import { DOM } from "../../../../js/DOM";
+import Inputmask from "inputmask";
 
-const getTemplate = (data = [], selectedId) => {
+
+const getTemplate = (data = [], selectedId, selector) => {
 
     let text = 'Выбери контакт'
 
@@ -11,15 +13,15 @@ const getTemplate = (data = [], selectedId) => {
             cls = 'selected'
         }
         return `
-                <li data-type='select-item' data-id='${el.id}' class="select__item ${cls}">
+                <li data-type='${selector}-item' data-id='${el.id}' class="select__item ${cls}">
                 ${el.value}
                 </li>
                 `
     })
 
     return `
-    <div class="select__input" data-type="select-input">
-    <span data-type='select-value'>${text}</span>
+    <div class="select__input" data-type="${selector}-input">
+    <span data-type='${selector}-value'>${text}</span>
     </div>
     <div class="select__dropdown">
         <ul class="select__list">
@@ -29,41 +31,54 @@ const getTemplate = (data = [], selectedId) => {
     `
 }
 
-export class Select extends DOM {
+const getEmailInputMask = (input) => {
+    return Inputmask({
+        mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[*{2,6}].*{1,10}[*{2,6}]",
+        definitions: {
+            '*': {
+                validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
+                casing: "lower"
+            }
+        }
+    }).mask(input)
+}
+
+export class Select {
 
     constructor(selector, options) {
-        super()
+
         this.el = document.querySelector(selector);
         this.options = options;
         this.selectedId = options.selectedId;
-
+        this.selector = selector
         this.#render()
         this.#setup()
     }
 
     #render() {
         const { data } = this.options
-        super.addClass(this.el, 'open')
-        this.el.innerHTML = getTemplate(data, this.selectedId)
+        this.el.innerHTML = getTemplate(data, this.selectedId, this.selector)
     }
 
     #setup() {
         this.clickHandler = this.clickHandler.bind(this)
         document.addEventListener('click', this.clickHandler)
-        this.value = this.el.querySelector('[data-type = "select-value"]')
+        this.value = this.el.querySelector(`[data-type = "${this.selector}-value"]`)
     }
 
     clickHandler(ev) {
         const { type } = ev.target.dataset;
 
-        if (type === 'select-input' || type === 'select-value') {
+        if (type === `${this.selector}-input` || type === `${this.selector}-value`) {
             this.toggle()
-        } else if (type === 'select-item') {
+        } else if (type === `${this.selector}-item`) {
             const id = ev.target.dataset.id;
             this.select(id)
+            this.setMask()
         } else if (ev.target !== this.el) {
             this.close()
         }
+
     }
 
     get isOpen() {
@@ -76,11 +91,26 @@ export class Select extends DOM {
         })
     }
 
+    setMask() {
+        const input = this.el.nextElementSibling
+
+        switch (this.current.type) {
+            case 'phone':
+                Inputmask({ mask: '+7(999)999-9999' }).mask(input)
+                break;
+            case 'email':
+                getEmailInputMask(input)
+                break
+            default:
+                input.inputmask ? input.inputmask.remove() : false
+                break;
+        }
+    }
+
     select(id) {
         this.selectedId = id
         this.value.textContent = this.current.value;
-
-        this.el.querySelectorAll('[data-type="select-item"]').forEach(el => super.removeClass(el, 'selected'))
+        this.el.querySelectorAll(`[data-type="${this.selector}-item"]`).forEach(el => DOM.removeClass(el, 'selected'))
         this.el.querySelector(`[data-id="${id}"]`).classList.add('selected')
 
         this.options.onSelect ? this.options.onSelect(this.current) : null
@@ -93,11 +123,11 @@ export class Select extends DOM {
     }
 
     open() {
-        super.addClass(this.el, 'open')
+        DOM.addClass(this.el, 'open')
     }
 
     close() {
-        super.removeClass(this.el, 'open')
+        DOM.removeClass(this.el, 'open')
     }
 
     destroy() {
