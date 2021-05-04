@@ -2,7 +2,8 @@
     <div class="popup__content popup-add__content">
         <div class="popup__body popup-add__body">
             <h3 class="popup__title popup-add__title">Новый клиент</h3>
-            <button aria-label="закрыть окно с картиной" class="popup__close popup-add__close"></button>
+            <button aria-label="закрыть окно с картиной" data-type='popup-close'
+                class="popup__close popup-add__close"></button>
             <form class="popup__form popup-add__form">
                 <label class="popup__input-wrapper popup__edit-input-wrapper popup__edit-input-wrapper--lastname">
                     <div class="popup__placeholder popup__place-holder--sub _hidden">
@@ -28,12 +29,7 @@
                 <div class="popup__contact popup-add__contact">
                     <div class="popup__contact-inner">
                         <div class="select">
-
                         </div>
-                        <!-- <select class="popup__contact-select">
-                            <option class="popup__select-option" value="Вконтакте">Вконтакте</option>
-                            <option class="popup__select-option" value="Твиттер">Твиттер</option>
-                        </select> -->
                         <input type="text" class="popup__contact-input" placeholder="Введите данные контакта">
                         <button type="reset" class="popup__contact-del" aria-label="Удалить контакт"></button>
                     </div>

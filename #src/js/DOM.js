@@ -1,22 +1,46 @@
 export class DOM {
-    static getEl(selector) {
+
+    // constructor(...callback) {
+    //     this.addClickListener(...callback)
+    // }
+
+    getEl(selector) {
         return document.querySelector(selector)
+
     };
 
-    static setAttr(selector, attr) {
+    setAttr(selector, attr) {
         selector.setAttribute(attr);
     }
 
-    static createEl(el) {
+    createEl(el) {
         return document.createElement(el)
     };
 
-    static addClass(el, selector) {
+    addClass(el, selector) {
         return el.classList.add(selector)
     }
 
-    static removeClass(el, selector) {
+    removeClass(el, selector) {
         return el.classList.remove(selector)
+    }
+
+    sayHello(string) {
+        console.log('Hello', string)
+    }
+
+    addClickListener(...callback) {
+        document.addEventListener('click', ev => {
+
+            callback.forEach(func => {
+                if (typeof func === 'function') {
+                    func(ev)
+                } else {
+                    console.log(func)
+
+                }
+            })
+        })
     }
 
 }

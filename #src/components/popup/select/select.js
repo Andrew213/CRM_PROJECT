@@ -1,5 +1,4 @@
-import { couldStartTrivia } from "typescript";
-import { DOM } from "../../js/DOM";
+import { DOM } from "../../../js/DOM";
 
 const getTemplate = (data = [], selectedId) => {
 
@@ -11,17 +10,16 @@ const getTemplate = (data = [], selectedId) => {
             text = el.value
             cls = 'selected'
         }
-
         return `
-                <li data-type='item' data-id='${el.id}' class="select__item ${cls}">
+                <li data-type='select-item' data-id='${el.id}' class="select__item ${cls}">
                 ${el.value}
                 </li>
                 `
     })
 
     return `
-    <div class="select__input" data-type="input">
-    <span data-type='value'>${text}</span>
+    <div class="select__input" data-type="select-input">
+    <span data-type='select-value'>${text}</span>
     </div>
     <div class="select__dropdown">
         <ul class="select__list">
@@ -31,9 +29,10 @@ const getTemplate = (data = [], selectedId) => {
     `
 }
 
-export class Select {
+export class Select extends DOM {
 
     constructor(selector, options) {
+        super()
         this.el = document.querySelector(selector);
         this.options = options;
         this.selectedId = options.selectedId;
@@ -44,22 +43,22 @@ export class Select {
 
     #render() {
         const { data } = this.options
-        DOM.addClass(this.el, 'open')
+        super.addClass(this.el, 'open')
         this.el.innerHTML = getTemplate(data, this.selectedId)
     }
 
     #setup() {
         this.clickHandler = this.clickHandler.bind(this)
         document.addEventListener('click', this.clickHandler)
-        this.value = this.el.querySelector('[data-type = "value"]')
+        this.value = this.el.querySelector('[data-type = "select-value"]')
     }
 
     clickHandler(ev) {
         const { type } = ev.target.dataset;
 
-        if (type === 'input' || type === 'value') {
+        if (type === 'select-input' || type === 'select-value') {
             this.toggle()
-        } else if (type === 'item') {
+        } else if (type === 'select-item') {
             const id = ev.target.dataset.id;
             this.select(id)
         } else if (ev.target !== this.el) {
@@ -81,7 +80,7 @@ export class Select {
         this.selectedId = id
         this.value.textContent = this.current.value;
 
-        this.el.querySelectorAll('[data-type="item"]').forEach(el => DOM.removeClass(el, 'selected'))
+        this.el.querySelectorAll('[data-type="select-item"]').forEach(el => super.removeClass(el, 'selected'))
         this.el.querySelector(`[data-id="${id}"]`).classList.add('selected')
 
         this.options.onSelect ? this.options.onSelect(this.current) : null
@@ -94,11 +93,11 @@ export class Select {
     }
 
     open() {
-        DOM.addClass(this.el, 'open')
+        super.addClass(this.el, 'open')
     }
 
     close() {
-        DOM.removeClass(this.el, 'open')
+        super.removeClass(this.el, 'open')
     }
 
     destroy() {
