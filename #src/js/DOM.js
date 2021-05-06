@@ -1,13 +1,16 @@
 export class DOM {
 
-    // constructor(...callback) {
-    //     this.addClickListener(...callback)
-    // }
+    constructor(...callback) {
+        this.addClickListener(...callback)
+    }
 
     static getEl(selector) {
         return document.querySelector(selector)
-
     };
+
+    static getAllEl(selector) {
+        return document.querySelectorAll(selector)
+    }
 
     static setAttr(selector, attr) {
         selector.setAttribute(attr);
@@ -29,18 +32,18 @@ export class DOM {
         console.log('Hello', string)
     }
 
-    // addClickListener(...callback) {
-    //     document.addEventListener('click', ev => {
+    addClickListener(...callback) {
+        document.addEventListener('click', ev => {
 
-    //         callback.forEach(func => {
-    //             if (typeof func === 'function') {
-    //                 func(ev)
-    //             } else {
-    //                 console.log(func)
+            callback.forEach(func => {
+                if (typeof func === 'function') {
+                    func(ev)
+                } else {
+                    console.log(func)
 
-    //             }
-    //         })
-    //     })
-    // }
+                }
+            })
+        })
+    }
 
 }

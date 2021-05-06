@@ -4,7 +4,7 @@ import Inputmask from "inputmask";
 
 const getTemplate = (data = [], selectedId, selector) => {
 
-    let text = 'Выбери контакт'
+    let text = 'Выберите контакт'
 
     const items = data.map(el => {
         let cls = ''
@@ -55,9 +55,15 @@ export class Select {
         this.#setup()
     }
 
+    get input() {
+        let input = this.el.nextElementSibling
+        return input
+    }
+
     #render() {
         const { data } = this.options
         this.el.innerHTML = getTemplate(data, this.selectedId, this.selector)
+        this.input.setAttribute('data-type', this.current.type)
     }
 
     #setup() {
@@ -92,17 +98,18 @@ export class Select {
     }
 
     setMask() {
-        const input = this.el.nextElementSibling
-
+        this.input.setAttribute('data-type', this.current.type)
         switch (this.current.type) {
             case 'phone':
-                Inputmask({ mask: '+7(999)999-9999' }).mask(input)
+                this.input.setAttribute('data-rule', 'phone')
+                Inputmask({ mask: '+7(999)999-9999' }).mask(this.input)
                 break;
             case 'email':
-                getEmailInputMask(input)
+                this.input.setAttribute('data-rule', 'mail')
+                getEmailInputMask(this.input)
                 break
             default:
-                input.inputmask ? input.inputmask.remove() : false
+                this.input.inputmask ? this.input.inputmask.remove() : false
                 break;
         }
     }
@@ -110,7 +117,7 @@ export class Select {
     select(id) {
         this.selectedId = id
         this.value.textContent = this.current.value;
-        this.el.querySelectorAll(`[data-type="${this.selector}-item"]`).forEach(el => DOM.removeClass(el, 'selected'))
+        this.el.querySelectorAll(`.select__item`).forEach(el => DOM.removeClass(el, 'selected'))
         this.el.querySelector(`[data-id="${id}"]`).classList.add('selected')
 
         this.options.onSelect ? this.options.onSelect(this.current) : null

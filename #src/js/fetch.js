@@ -11,6 +11,7 @@ export class Fetch {
                 'Content-Type': 'application/json',
             }
         })
+
     }
     static async getRequest(url) {
         let response = await fetchPolyfill(url)

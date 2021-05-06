@@ -2,32 +2,6 @@ import { body_lock_add, body_lock_remove, unlock } from "../../js/body_lock"
 import { DOM } from "../../js/DOM";
 
 
-// const addContact = () => {
-
-// }
-
-// export const savePerson = ev => {
-//     const btn_saveEl = ev.target.closest('.popup__btn-save');
-
-//     if (btn_saveEl) {
-
-//         ev.preventDefault()
-
-//         if (input_lastNameEl.value.trim() !== '' && input_nameEl.value.trim() !== '') {
-
-//             const newClient = new Client(input_nameEl.value, input_surnameEl.value, input_lastNameEl.value, { type: 'VK', value: 'hhtps://vk.com' }, { type: 'fb', value: 'hhtps://fb.com' })
-
-//             sendRequest('http://localhost:5000/api/clients', newClient)
-//         }
-
-
-
-//     }
-
-// };
-
-
-
 // #####################################################################
 
 const popup_open = item => {
@@ -75,3 +49,4 @@ export const activatePopup = event => {
     }
 }
 // #####################################################################
+//  
