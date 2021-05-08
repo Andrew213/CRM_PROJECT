@@ -24,6 +24,7 @@ const getContacts = () => {
             value: input.value.trim()
         }
         contacts.push(obj)
+        input.value = ''
     })
 
     return contacts;

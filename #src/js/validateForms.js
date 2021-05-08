@@ -34,25 +34,27 @@ function validationUnRequire(flag) {
 }
 
 function validationContacts(flag) {
-    const input = DOM.getEl('[data-rule="contact"]');
-    if (input) {
-        if (flag) {
-            const value = input.value.trim()
-            if (value !== '') {
-                DOM.removeClass(input, 'popup__input--err')
-                return flag = true
+    const inputs = DOM.getAllEl('[data-rule="contact"]');
+
+    inputs.forEach(input => {
+        if (input) {
+            if (flag) {
+                const value = input.value.trim()
+                if (value !== '') {
+                    DOM.removeClass(input, 'popup__input--err')
+                    return flag = true
+                } else {
+                    DOM.addClass(input, 'popup__input--err')
+                    return flag = false
+                }
             } else {
-                DOM.addClass(input, 'popup__input--err')
                 return flag = false
             }
-        } else {
-            return flag = false
-        }
-
-    } else {
-        return flag
-    }
-
+    
+        } 
+    })
+    
+return flag
 }
 
 validationContacts()

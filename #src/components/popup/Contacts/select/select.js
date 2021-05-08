@@ -101,11 +101,11 @@ export class Select {
         this.input.setAttribute('data-type', this.current.type)
         switch (this.current.type) {
             case 'phone':
-                this.input.setAttribute('data-rule', 'phone')
+                // this.input.setAttribute('data-contact', 'phone')
                 Inputmask({ mask: '+7(999)999-9999' }).mask(this.input)
                 break;
             case 'email':
-                this.input.setAttribute('data-rule', 'mail')
+                // this.input.setAttribute('data-contact', 'mail')
                 getEmailInputMask(this.input)
                 break
             default:
