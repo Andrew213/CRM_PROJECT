@@ -1,7 +1,7 @@
 const path = require("path")
 
 
-let mode = 'development';
+let mode = 'production';
 let target = "web";
 if (process.env.NODE_ENV === 'production') {
     mode = 'production';

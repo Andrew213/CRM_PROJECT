@@ -20,8 +20,8 @@ export class DOM {
         return document.createElement(el)
     };
 
-    static addClass(el, selector) {
-        return el.classList.add(selector)
+    static addClass(el, ...selector) {
+        return el.classList.add(...selector)
     }
 
     static removeClass(el, selector) {

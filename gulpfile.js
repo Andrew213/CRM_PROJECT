@@ -152,34 +152,6 @@ function js() {
 }
 
 
-function images() {
-	return src(path.src.images)
-		.pipe(newer(path.build.images))
-		.pipe(
-			imagemin([
-				webp({
-					quality: 80
-				})
-			])
-		)
-		.pipe(
-			rename({
-				extname: ".webp"
-			})
-		)
-		.pipe(dest(path.build.images))
-		.pipe(src(path.src.images))
-		.pipe(
-			imagemin({
-				progressive: true,
-				svgoPlugins: [{ removeViewBox: false }],
-				interlaced: true,
-				optimizationLevel: 3 // 0 to 7
-			})
-		)
-		.pipe(dest(path.build.images))
-		.pipe(browsersync.stream());
-}
 function favicon() {
 	return src(path.src.favicon)
 		.pipe(plumber())
@@ -227,6 +199,36 @@ function fontstyle() {
 		})
 	}
 }
+
+function images() {
+	return src(path.src.images)
+		.pipe(newer(path.build.images))
+		.pipe(
+			imagemin([
+				webp({
+					quality: 80
+				})
+			])
+		)
+		.pipe(
+			rename({
+				extname: ".webp"
+			})
+		)
+		.pipe(dest(path.build.images))
+		.pipe(src(path.src.images))
+		.pipe(
+			imagemin({
+				progressive: true,
+				svgoPlugins: [{ removeViewBox: false }],
+				interlaced: true,
+				optimizationLevel: 3 // 0 to 7
+			})
+		)
+		.pipe(dest(path.build.images))
+		.pipe(browsersync.stream());
+}
+
 function cb() { }
 function clean() {
 	return del(path.clean);
@@ -236,18 +238,19 @@ function watchFiles() {
 	gulp.watch([path.watch.css], css);
 	gulp.watch([path.watch.js], js);
 	gulp.watch([path.watch.images], images);
+
 }
 let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, favicon, images), fonts, gulp.parallel(fontstyle, "script", "style"));
 let watch = gulp.parallel(build, watchFiles, browserSync,);
 
 exports.html = html;
 exports.css = css;
+exports.images = images;
 exports.js = js;
 exports.favicon = favicon;
 exports.fonts_otf = fonts_otf;
 exports.fontstyle = fontstyle;
 exports.fonts = fonts;
-exports.images = images;
 exports.clean = clean;
 exports.build = build;
 exports.watch = watch;

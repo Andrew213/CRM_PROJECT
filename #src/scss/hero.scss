@@ -157,7 +157,19 @@
         font-size: 14px;
         font-weight: 400;
         color: #333;
-        padding-right: 40px;
+        // white-space: nowrap;
+        padding-right: 25px;
+        // overflow: hidden;
+        max-width: 220px;
+    }
+
+    &__table-name-text {
+        // overflow:  hidden;
+    }
+
+    &__table-name--active{
+        animation: scroll 5s infinite linear;
+        animation-delay: 1s;
     }
 
     &__table-cell--create {
@@ -200,6 +212,10 @@
     }
     &__table-contacts-cell-item {
         margin-right: 7px;
+        opacity: 0.7;
+        &:hover{
+            opacity: 1;
+        }
     }
 
     &__social {
@@ -227,9 +243,12 @@
         opacity: 1;
     }
 
-    &__social-icon {
-        opacity: 0.7;
-    }
+    // &__social-icon {
+    //     opacity: 0.7;
+    //     &:hover{
+    //         opacity: 1;
+    //     }
+    // }
 
     &__tooltip {
         width: max-content;
@@ -255,9 +274,7 @@
     }
 
     &__social-icon--vk {
-        &:hover {
-            opacity: 1;
-        }
+      
     }
 
     &__tooltip--vk {
@@ -428,6 +445,17 @@
     }
 }
 
+@keyframes scroll {
+    0% {
+        transform: translate(0, 0);
+        overflow: unset;
+    }
+    100% {
+        transform: translate(-100%, 0);
+        overflow: unset;
+    }
+}
+
 @media (max-width: 800px) {
     .hero {
         &__table-cell--name {
@@ -466,3 +494,4 @@
         }
     }
 }
+
